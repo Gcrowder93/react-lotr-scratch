@@ -2,13 +2,15 @@
 
 import React from 'react';
 import { useEffect, useState } from 'react';
-import CharactersList from '../../components/CharactersList';
+import CharactersList from '../../components/Characters/CharactersList';
 import { fetchCharacters } from '../../services/characters';
+import Controls from '../../components/Characters/Controls';
 
 export default function Characters() {
+  const [race, setRace] = useState('All');
+  // const [characters, setCharacters] = useState([]);
   const [data, setData] = useState([]);
-  const [query] = useState('');
-  const [race] = useState('All');
+  const [query, setQuery] = useState('');
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchCharacters(race);
@@ -25,6 +27,7 @@ export default function Characters() {
   return (
     <div>
       <h1>Characters</h1>
+      <Controls {...{ query, setQuery, race, setRace, handleClick }} />
       <CharactersList characters={data} />
     </div>
   );

@@ -1,18 +1,21 @@
 import './App.css';
-import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
-import Characters from './components/CharactersList';
-// import Films from './components/FilmsList';
-// import Books from './components/BooksList';
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import Characters from './views/Characters/Characters';
+import Films from './views/Films/Films';
+import Books from './views/Books/Books';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <header>
+          <NavLink to="/" data-testid="/" exact>
+            Home
+          </NavLink>
           <NavLink to="/films" data-testid="film-link">
             Films
           </NavLink>
-          <NavLink to="/characters" data-testid="character-link">
+          <NavLink to="/characters" data-testid="char-link">
             Characters
           </NavLink>
           <NavLink to="/books" data-testid="book-link">
@@ -20,11 +23,18 @@ function App() {
           </NavLink>
         </header>
         <Switch>
+          <Route path="/" exact>
+            {/* <Main /> */}
+          </Route>
           <Route path="/characters">
             <Characters />
           </Route>
-          <Route path="/films">{/* <Films /> */}</Route>
-          <Route path="/books">{/* <Books /> */}</Route>
+          <Route path="/films">
+            <Films />
+          </Route>
+          <Route path="/books">
+            <Books />
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>
