@@ -1,15 +1,10 @@
 import './App.css';
-import { useState } from 'react';
 import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
-import CharactersList from './components/CharactersList';
-import FilmsList from './components/FilmsList';
-import BooksList from './components/BooksList';
+import Characters from './components/CharactersList';
+// import Films from './components/FilmsList';
+// import Books from './components/BooksList';
 
 function App() {
-  const [films, setFilms] = useState([]);
-  const [characters, setCharacters] = useState([]);
-  const [books, setBooks] = useState([]);
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -26,14 +21,10 @@ function App() {
         </header>
         <Switch>
           <Route path="/characters">
-            <CharactersList characters={characters} setCharacters={setCharacters} />
+            <Characters />
           </Route>
-          <Route path="/films">
-            <FilmsList films={films} setFilms={setFilms} />
-          </Route>
-          <Route path="/books">
-            <BooksList books={books} setBooks={setBooks} />
-          </Route>
+          <Route path="/films">{/* <Films /> */}</Route>
+          <Route path="/books">{/* <Books /> */}</Route>
         </Switch>
       </BrowserRouter>
     </div>
